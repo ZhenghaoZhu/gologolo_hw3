@@ -12,6 +12,7 @@ const GET_LOGO = gql`
             color
             fontSize
             backgroundColor
+            borderColor
         }
     }
 `;
@@ -21,13 +22,15 @@ const UPDATE_LOGO = gql`
         $id: String!,
         $text: String!,
         $color: String!,
-        $fontSize: Int!) {
+        $fontSize: Int!,
+        $borderColor: String!) {
             updateLogo(
                 id: $id,
                 text: $text,
                 color: $color,
                 fontSize: $fontSize,
-                backgroundColor: $backgroundColor) {
+                backgroundColor: $backgroundColor,
+                borderColor: $borderColor) {
                     lastUpdate
                 }
         }
@@ -36,7 +39,7 @@ const UPDATE_LOGO = gql`
 class EditLogoScreen extends Component {
 
     render() {
-        let text, color, fontSize, backgroundColor;
+        let text, color, fontSize, backgroundColor, borderColor;
         return (
             <Query query={GET_LOGO} variables={{ logoId: this.props.match.params.id }}>
                 {({ loading, error, data }) => {
@@ -62,12 +65,14 @@ class EditLogoScreen extends Component {
                                                                             text: text.value, 
                                                                             color: color.value, 
                                                                             fontSize: parseInt(fontSize.value),
-                                                                            backgroundColor: backgroundColor.value 
+                                                                            backgroundColor: backgroundColor.value,
+                                                                            borderColor: borderColor.value
                                                                             } });
                                                     text.value = "";
                                                     color.value = "";
                                                     fontSize.value = "";
                                                     backgroundColor.value = "";
+                                                    borderColor.value = "";
                                                 }}>
                                                     <div className="form-group">
                                                         <label htmlFor="text">Text:</label>
@@ -92,6 +97,12 @@ class EditLogoScreen extends Component {
                                                         <input type="color" className="form-control" name="backgroundColor" ref={node => {
                                                             backgroundColor = node;
                                                         }} placeholder="Background Color" defaultValue={data.logo.backgroundColor} />
+                                                    </div>
+                                                    <div className="form-group">
+                                                        <label htmlFor="color">Border Color:</label>
+                                                        <input type="color" className="form-control" name="borderColor" ref={node => {
+                                                            borderColor = node;
+                                                        }} placeholder="Border Color" defaultValue={data.logo.borderColor} />
                                                     </div>
                                                     <button type="submit" className="btn btn-success">Submit</button>
                                                 </form>

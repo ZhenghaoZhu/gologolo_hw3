@@ -8,12 +8,14 @@ const ADD_LOGO = gql`
         $text: String!,
         $color: String!,
         $fontSize: Int!,
-        $backgroundColor: String!) {
+        $backgroundColor: String!,
+        $borderColor: String!) {
         addLogo(
             text: $text,
             color: $color,
             fontSize: $fontSize,
-            backgroundColor: $backgroundColor) {
+            backgroundColor: $backgroundColor,
+            borderColor: $borderColor) {
             _id
         }
     }
@@ -22,7 +24,7 @@ const ADD_LOGO = gql`
 class CreateLogoScreen extends Component {
 
     render() {
-        let text, color, fontSize, backgroundColor;
+        let text, color, fontSize, backgroundColor, borderColor;
         return (
             <Mutation mutation={ADD_LOGO} onCompleted={() => this.props.history.push('/')}>
                 {(addLogo, { loading, error }) => (
@@ -40,11 +42,13 @@ class CreateLogoScreen extends Component {
                                     addLogo({ variables: { text: text.value, 
                                                            color: color.value, 
                                                            fontSize: parseInt(fontSize.value), 
-                                                           backgroundColor: backgroundColor.value } });
+                                                           backgroundColor: backgroundColor.value,
+                                                           borderColor: borderColor.value } });
                                     text.value = "";
                                     color.value = "";
                                     fontSize.value = "";
                                     backgroundColor.value = "";
+                                    borderColor.value = "";
                                 }}>
                                     <div className="form-group">
                                         <label htmlFor="text">Text:</label>
@@ -69,6 +73,12 @@ class CreateLogoScreen extends Component {
                                         <input type="color" className="form-control" name="backgroundColor" ref={node => {
                                             backgroundColor = node;
                                         }} placeholder="Background Color" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="color">Border Color:</label>
+                                        <input type="color" className="form-control" name="borderColor" ref={node => {
+                                            borderColor = node;
+                                        }} placeholder="Border Color" />
                                     </div>
                                     <button type="submit" className="btn btn-success">Submit</button>
                                 </form>
