@@ -10,14 +10,16 @@ const ADD_LOGO = gql`
         $fontSize: Int!,
         $backgroundColor: String!,
         $borderColor: String!,
-        $borderRadius: Int!) {
+        $borderRadius: Int!,
+        $borderWidth: Int!) {
         addLogo(
             text: $text,
             color: $color,
             fontSize: $fontSize,
             backgroundColor: $backgroundColor,
             borderColor: $borderColor,
-            borderRadius: $borderRadius) {
+            borderRadius: $borderRadius,
+            borderWidth: $borderWidth) {
             _id
         }
     }
@@ -26,7 +28,7 @@ const ADD_LOGO = gql`
 class CreateLogoScreen extends Component {
 
     render() {
-        let text, color, fontSize, backgroundColor, borderColor, borderRadius;
+        let text, color, fontSize, backgroundColor, borderColor, borderRadius, borderWidth;
         return (
             <Mutation mutation={ADD_LOGO} onCompleted={() => this.props.history.push('/')}>
                 {(addLogo, { loading, error }) => (
@@ -46,13 +48,15 @@ class CreateLogoScreen extends Component {
                                                            fontSize: parseInt(fontSize.value), 
                                                            backgroundColor: backgroundColor.value,
                                                            borderColor: borderColor.value,
-                                                           borderRadius: parseInt(borderRadius.value)} });
+                                                           borderRadius: parseInt(borderRadius.value),
+                                                           borderWidth: parseInt(borderWidth.value)} });
                                     text.value = "";
                                     color.value = "";
                                     fontSize.value = "";
                                     backgroundColor.value = "";
                                     borderColor.value = "";
                                     borderRadius.value = "";
+                                    borderWidth.value = "";
                                 }}>
                                     <div className="form-group">
                                         <label htmlFor="text">Text:</label>
@@ -73,22 +77,28 @@ class CreateLogoScreen extends Component {
                                         }} placeholder="Font Size" />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="backgroundColor">Font Size:</label>
+                                        <label htmlFor="backgroundColor">Background Color:</label>
                                         <input type="color" className="form-control" name="backgroundColor" ref={node => {
                                             backgroundColor = node;
                                         }} placeholder="Background Color" />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="color">Border Color:</label>
+                                        <label htmlFor="borderColor">Border Color:</label>
                                         <input type="color" className="form-control" name="borderColor" ref={node => {
                                             borderColor = node;
                                         }} placeholder="Border Color" />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="fontSize">Border Radius:</label>
+                                        <label htmlFor="borderRadius">Border Radius:</label>
                                         <input type="number" className="form-control" name="borderRadius" ref={node => {
                                             borderRadius = node;
                                         }} placeholder="Border Radius" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="borderWidth">Border Thickness:</label>
+                                        <input type="number" className="form-control" name="borderWidth" ref={node => {
+                                            borderWidth = node;
+                                        }} placeholder="Border Thickness" />
                                     </div>
                                     <button type="submit" className="btn btn-success">Submit</button>
                                 </form>

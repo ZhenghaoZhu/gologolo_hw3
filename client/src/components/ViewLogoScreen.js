@@ -15,6 +15,7 @@ const GET_LOGO = gql`
             backgroundColor
             borderColor
             borderRadius
+            borderWidth
             lastUpdate
         }
     }
@@ -61,6 +62,8 @@ class ViewLogoScreen extends Component {
                                             <dd>{data.logo.borderColor}</dd>
                                             <dt>Border Radius:</dt>
                                             <dd>{data.logo.borderRadius}</dd>
+                                            <dt>Border Thickness:</dt>
+                                            <dd>{data.logo.borderWidth}</dd>
                                             <dt>Last Updated:</dt>
                                             <dd>{data.logo.lastUpdate}</dd>
                                         </dl>
