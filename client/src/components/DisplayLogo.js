@@ -11,7 +11,7 @@ class DisplayLogo extends Component {
                 fontSize: this.props.logo.fontSize + "pt",
                 backgroundColor: this.props.logo.backgroundColor,
                 borderColor: this.props.logo.borderColor,
-                // borderRadius: this.props.logo.borderRadius + "pt",
+                borderRadius: this.props.logo.borderRadius + "pt",
                 // border: this.props.logo.border,
                 borderStyle: "solid",
                 // borderWidth: this.props.logo.borderWidth + "pt",

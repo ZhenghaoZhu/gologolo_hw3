@@ -7,6 +7,7 @@ var LogoSchema = new mongoose.Schema({
   fontSize: { type: Number, min: 2, max: 144 },
   backgroundColor: String,
   borderColor: String,
+  borderRadius: { type: Number, min: 2, max: 144},
   lastUpdate: { type: Date, default: Date.now },
 });
 
