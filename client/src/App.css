@@ -22,12 +22,65 @@ body {
   background-image: linear-gradient(to bottom,         
   #599db8, #2b6688, #2b6688);
   color: white;
-  font-size: 48pt;
+  font-size: 52pt;
   border-color: black;
   border-width: 2px;
   border-style: solid;
   border-radius: 10px;
-  padding-left: 10%;
   padding-top: 5%;
   padding-bottom: 5%;
+  text-align: center;
+}
+
+#add_logo_button {
+  font-size: 32pt;
+  background-color: rgb(202, 199, 199);
+  width: 530px;
+  margin-top: 10px;
+}
+
+#add_logo_link {
+  white-space: pre;
+  color: black
+}
+
+#recent_work_home {
+  font-size: 36pt;
+  text-decoration: underline;
+}
+
+#recent_work_div {
+  margin-left: 70px;
+  width: 300px
+}
+
+.home_logo_link {
+  white-space: pre;
+  font-size: 24pt;
+  width: 300px;
+}
+
+.panel-body {
+  display: inline-block
+}
+
+.displayed_logo {
+  display: inline-block
+}
+
+.panel_with_displayed_logo {
+  display: flex
+}
+
+#displayedLogoViewLogoScreen {
+  display: inline-block;
+  margin-left: 150px;
+}
+
+.panel-body {
+  display: inline-block
+}
+
+.displayedLogo {
+  white-space: pre;
 }

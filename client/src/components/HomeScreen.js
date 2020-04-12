@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import '../App.css';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
+import {Button} from 'react-materialize';
+import M from 'materialize-css';
 
 const GET_LOGOS = gql`
   {
@@ -25,12 +27,12 @@ class HomeScreen extends Component {
 
                     return (
                         <div className="container row">
-                            <div className="col s4">
-                                <h3>Recent Work</h3>
+                            <div id = "recent_work_div" className="col s4">
+                                <h3 id = "recent_work_home">Recent Work</h3>
                                 {data.logos.map((logo, index) => (
                                     <div key={index} className='home_logo_link'
                                         style={{ cursor: "pointer" }}>
-                                        <Link to={`/view/${logo._id}`}>{logo.text}</Link>
+                                        <Link to={`/view/${logo._id}`}>{"• " + logo.text}</Link>
                                     </div>
                                 ))}
                             </div>
@@ -39,7 +41,9 @@ class HomeScreen extends Component {
                                     Gologolo
                                 </div>
                                 <div>
-                                    <Link id="add_logo_button" to="/create">Add Logo</Link>
+                                    <Button id="add_logo_button">
+                                        <Link  id = "add_logo_link" to="/create">            Add Logo            </Link>
+                                    </Button>
                                 </div>
                             </div>
                         </div>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../App.css';
 import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
+import DisplayLogo from './DisplayLogo.js';
 
 const GET_LOGO = gql`
     query logo($logoId: String) {
@@ -36,42 +37,47 @@ class ViewLogoScreen extends Component {
 
                     return (
                         <div className="container">
-                            <div className="panel panel-default">
+                            <div className="panel_panel_default">
                                 <div className="panel-heading">
                                     <h4><Link to="/">Home</Link></h4>
                                     <h3 className="panel-title">
                                         View Logo
                                     </h3>
                                 </div>
-                                <div className="panel-body">
-                                    <dl>
-                                        <dt>Text:</dt>
-                                        <dd>{data.logo.text}</dd>
-                                        <dt>Color:</dt>
-                                        <dd>{data.logo.color}</dd>
-                                        <dt>Font Size:</dt>
-                                        <dd>{data.logo.fontSize}</dd>
-                                        <dt>Background Color:</dt>
-                                        <dd>{data.logo.backgroundColor}</dd>
-                                        <dt>Last Updated:</dt>
-                                        <dd>{data.logo.lastUpdate}</dd>
-                                    </dl>
-                                    <Mutation mutation={DELETE_LOGO} key={data.logo._id} onCompleted={() => this.props.history.push('/')}>
-                                        {(removeLogo, { loading, error }) => (
-                                            <div>
-                                                <form
-                                                    onSubmit={e => {
-                                                        e.preventDefault();
-                                                        removeLogo({ variables: { id: data.logo._id } });
-                                                    }}>
-                                                    <Link to={`/edit/${data.logo._id}`} className="btn btn-success">Edit</Link>&nbsp;
-                                                <button type="submit" className="btn btn-danger">Delete</button>
-                                                </form>
-                                                {loading && <p>Loading...</p>}
-                                                {error && <p>Error :( Please try again</p>}
-                                            </div>
-                                        )}
-                                    </Mutation>
+                                <div className = "panel_with_displayed_logo">
+                                    <div className="panel-body">
+                                        <dl>
+                                            <dt>Text:</dt>
+                                            <dd>{data.logo.text}</dd>
+                                            <dt>Color:</dt>
+                                            <dd>{data.logo.color}</dd>
+                                            <dt>Font Size:</dt>
+                                            <dd>{data.logo.fontSize}</dd>
+                                            <dt>Background Color:</dt>
+                                            <dd>{data.logo.backgroundColor}</dd>
+                                            <dt>Last Updated:</dt>
+                                            <dd>{data.logo.lastUpdate}</dd>
+                                        </dl>
+                                        <Mutation mutation={DELETE_LOGO} key={data.logo._id} onCompleted={() => this.props.history.push('/')}>
+                                            {(removeLogo, { loading, error }) => (
+                                                <div>
+                                                    <form
+                                                        onSubmit={e => {
+                                                            e.preventDefault();
+                                                            removeLogo({ variables: { id: data.logo._id } });
+                                                        }}>
+                                                        <Link to={`/edit/${data.logo._id}`} className="btn btn-success">Edit</Link>&nbsp;
+                                                    <button type="submit" className="btn btn-danger">Delete</button>
+                                                    </form>
+                                                    {loading && <p>Loading...</p>}
+                                                    {error && <p>Error. Please try again</p>}
+                                                </div>
+                                            )}
+                                        </Mutation>
+                                    </div>
+                                    <div id = "displayedLogoViewLogoScreen">
+                                        <DisplayLogo logo = {data.logo} logoText = {data.logo.text}></DisplayLogo>
+                                    </div>
                                 </div>
                             </div>
                         </div>
