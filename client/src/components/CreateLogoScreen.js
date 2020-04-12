@@ -7,11 +7,13 @@ const ADD_LOGO = gql`
     mutation AddLogo(
         $text: String!,
         $color: String!,
-        $fontSize: Int!) {
+        $fontSize: Int!,
+        $backgroundColor: String!) {
         addLogo(
             text: $text,
             color: $color,
-            fontSize: $fontSize) {
+            fontSize: $fontSize,
+            backgroundColor: $backgroundColor) {
             _id
         }
     }
@@ -20,7 +22,7 @@ const ADD_LOGO = gql`
 class CreateLogoScreen extends Component {
 
     render() {
-        let text, color, fontSize;
+        let text, color, fontSize, backgroundColor;
         return (
             <Mutation mutation={ADD_LOGO} onCompleted={() => this.props.history.push('/')}>
                 {(addLogo, { loading, error }) => (
@@ -35,10 +37,14 @@ class CreateLogoScreen extends Component {
                             <div className="panel-body">
                                 <form onSubmit={e => {
                                     e.preventDefault();
-                                    addLogo({ variables: { text: text.value, color: color.value, fontSize: parseInt(fontSize.value) } });
+                                    addLogo({ variables: { text: text.value, 
+                                                           color: color.value, 
+                                                           fontSize: parseInt(fontSize.value), 
+                                                           backgroundColor: backgroundColor.value } });
                                     text.value = "";
                                     color.value = "";
                                     fontSize.value = "";
+                                    backgroundColor.value = "";
                                 }}>
                                     <div className="form-group">
                                         <label htmlFor="text">Text:</label>
@@ -57,6 +63,12 @@ class CreateLogoScreen extends Component {
                                         <input type="number" className="form-control" name="fontSize" ref={node => {
                                             fontSize = node;
                                         }} placeholder="Font Size" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="backgroundColor">Font Size:</label>
+                                        <input type="color" className="form-control" name="backgroundColor" ref={node => {
+                                            backgroundColor = node;
+                                        }} placeholder="Background Color" />
                                     </div>
                                     <button type="submit" className="btn btn-success">Submit</button>
                                 </form>

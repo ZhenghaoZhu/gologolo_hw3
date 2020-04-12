@@ -36,8 +36,7 @@ class HomeScreen extends Component {
                             </div>
                             <div className="col s8">
                                 <div id="home_banner_container">
-                                    @todo<br />
-                                    List Maker
+                                    Gologolo
                                 </div>
                                 <div>
                                     <Link id="add_logo_button" to="/create">Add Logo</Link>
@@ -47,7 +46,7 @@ class HomeScreen extends Component {
                     );
                 }
                 }
-            </Query >
+            </Query>
         );
     }
 }

@@ -10,6 +10,7 @@ const GET_LOGO = gql`
             text
             color
             fontSize
+            backgroundColor
         }
     }
 `;
@@ -24,7 +25,8 @@ const UPDATE_LOGO = gql`
                 id: $id,
                 text: $text,
                 color: $color,
-                fontSize: $fontSize) {
+                fontSize: $fontSize,
+                backgroundColor: $backgroundColor) {
                     lastUpdate
                 }
         }
@@ -33,7 +35,7 @@ const UPDATE_LOGO = gql`
 class EditLogoScreen extends Component {
 
     render() {
-        let text, color, fontSize;
+        let text, color, fontSize, backgroundColor;
         return (
             <Query query={GET_LOGO} variables={{ logoId: this.props.match.params.id }}>
                 {({ loading, error, data }) => {
@@ -54,10 +56,16 @@ class EditLogoScreen extends Component {
                                         <div className="panel-body">                                            
                                             <form onSubmit={e => {
                                                 e.preventDefault();
-                                                updateLogo({ variables: { id: data.logo._id, text: text.value, color: color.value, fontSize: parseInt(fontSize.value) } });
+                                                updateLogo({ variables: { id: data.logo._id, 
+                                                                          text: text.value, 
+                                                                          color: color.value, 
+                                                                          fontSize: parseInt(fontSize.value),
+                                                                          backgroundColor: backgroundColor.value 
+                                                                          } });
                                                 text.value = "";
                                                 color.value = "";
                                                 fontSize.value = "";
+                                                backgroundColor.value = "";
                                             }}>
                                                 <div className="form-group">
                                                     <label htmlFor="text">Text:</label>
@@ -76,6 +84,12 @@ class EditLogoScreen extends Component {
                                                     <input type="text" className="form-control" name="fontSize" ref={node => {
                                                         fontSize = node;
                                                     }} placeholder="Font Size" defaultValue={data.logo.fontSize} />
+                                                </div>
+                                                <div className="form-group">
+                                                    <label htmlFor="backgroundColor">Background Color:</label>
+                                                    <input type="color" className="form-control" name="backgroundColor" ref={node => {
+                                                        backgroundColor = node;
+                                                    }} placeholder="Background Color" defaultValue={data.logo.backgroundColor} />
                                                 </div>
                                                 <button type="submit" className="btn btn-success">Submit</button>
                                             </form>
