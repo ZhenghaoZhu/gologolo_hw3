@@ -15,7 +15,7 @@
         ms
       }
     }
-
+#
 # Add a logo into the database
 
 ### Use this command to add an example logo into the database
@@ -44,6 +44,7 @@
 
 ### Query the database again and get the _id of the logo you just added
 
+#
 # Update a logo in the database
 ### Now, copy the code below but also remember to replace "[ID HERE]" with the _id you just got from the logo you created.
 
@@ -73,6 +74,7 @@
 
 ### Query the database again and you'll see the corresponding logo has been updated
 
+#
 # Delete a logo in the database
 
 ### Run the following code to delete a logo based on its id
