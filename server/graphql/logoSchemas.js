@@ -37,6 +37,9 @@ var logoType = new GraphQLObjectType({
             borderWidth: {
                 type: GraphQLInt
             },
+            padding: {
+                type: GraphQLInt
+            },
             lastUpdate: {
                 type: GraphQLDate
             }
@@ -105,6 +108,9 @@ var mutation = new GraphQLObjectType({
                     },
                     borderWidth: {
                         type: new GraphQLNonNull(GraphQLInt)
+                    },
+                    padding: {
+                        type: new GraphQLNonNull(GraphQLInt)
                     }
                 },
                 resolve: function (root, params) {
@@ -143,6 +149,9 @@ var mutation = new GraphQLObjectType({
                     },
                     borderWidth: {
                         type: new GraphQLNonNull(GraphQLInt)
+                    },
+                    padding: {
+                        type: new GraphQLNonNull(GraphQLInt)
                     }
                 },
                 resolve(root, params) {
@@ -152,7 +161,8 @@ var mutation = new GraphQLObjectType({
                                                                     backgroundColor: params.backgroundColor, 
                                                                     borderColor: params.borderColor,
                                                                     borderRadius: params.borderRadius,
-                                                                    borderWidth: params.borderWidth, 
+                                                                    borderWidth: params.borderWidth,
+                                                                    padding: params.padding, 
                                                                     lastUpdate: new Date() }, function (err) {
                         if (err) return next(err);
                     });

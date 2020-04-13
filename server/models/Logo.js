@@ -9,6 +9,7 @@ var LogoSchema = new mongoose.Schema({
   borderColor: String,
   borderRadius: { type: Number, min: 2, max: 144},
   borderWidth: { type: Number, min: 2, max: 144},
+  padding: { type: Number, min: 2, max: 144},
   lastUpdate: { type: Date, default: Date.now },
 });
 

@@ -11,7 +11,8 @@ const ADD_LOGO = gql`
         $backgroundColor: String!,
         $borderColor: String!,
         $borderRadius: Int!,
-        $borderWidth: Int!) {
+        $borderWidth: Int!,
+        $padding: Int!) {
         addLogo(
             text: $text,
             color: $color,
@@ -19,7 +20,8 @@ const ADD_LOGO = gql`
             backgroundColor: $backgroundColor,
             borderColor: $borderColor,
             borderRadius: $borderRadius,
-            borderWidth: $borderWidth) {
+            borderWidth: $borderWidth,
+            padding: $padding) {
             _id
         }
     }
@@ -28,7 +30,7 @@ const ADD_LOGO = gql`
 class CreateLogoScreen extends Component {
 
     render() {
-        let text, color, fontSize, backgroundColor, borderColor, borderRadius, borderWidth;
+        let text, color, fontSize, backgroundColor, borderColor, borderRadius, borderWidth, padding;
         return (
             <Mutation mutation={ADD_LOGO} onCompleted={() => this.props.history.push('/')}>
                 {(addLogo, { loading, error }) => (
@@ -49,7 +51,8 @@ class CreateLogoScreen extends Component {
                                                            backgroundColor: backgroundColor.value,
                                                            borderColor: borderColor.value,
                                                            borderRadius: parseInt(borderRadius.value),
-                                                           borderWidth: parseInt(borderWidth.value)} });
+                                                           borderWidth: parseInt(borderWidth.value),
+                                                           padding: parseInt(padding.value)} });
                                     text.value = "";
                                     color.value = "";
                                     fontSize.value = "";
@@ -57,6 +60,7 @@ class CreateLogoScreen extends Component {
                                     borderColor.value = "";
                                     borderRadius.value = "";
                                     borderWidth.value = "";
+                                    padding.value = "";
                                 }}>
                                     <div className="form-group">
                                         <label htmlFor="text">Text:</label>
@@ -99,6 +103,12 @@ class CreateLogoScreen extends Component {
                                         <input type="number" className="form-control" name="borderWidth" ref={node => {
                                             borderWidth = node;
                                         }} placeholder="Border Thickness" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="padding">Padding:</label>
+                                        <input type="number" className="form-control" name="padding" ref={node => {
+                                            padding = node;
+                                        }} placeholder="Padding" />
                                     </div>
                                     <button type="submit" className="btn btn-success">Submit</button>
                                 </form>
