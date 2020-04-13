@@ -16,7 +16,7 @@ class DisplayLogo extends Component {
                 borderStyle: "solid",
                 borderWidth: this.props.logo.borderWidth + "pt",
                 padding: this.props.logo.padding + "pt",
-                // margin: this.props.logo.margin + "pt",
+                margin: this.props.logo.margin + "pt",
                 // width: "auto"
             }
         }

@@ -16,6 +16,7 @@ const GET_LOGO = gql`
             borderRadius
             borderWidth
             padding
+            margin
         }
     }
 `;
@@ -30,7 +31,8 @@ const UPDATE_LOGO = gql`
         $borderColor: String!,
         $borderRadius: Int!,
         $borderWidth: Int!,
-        $padding: Int!) {
+        $padding: Int!,
+        $margin: Int!) {
             updateLogo(
                 id: $id,
                 text: $text,
@@ -40,7 +42,8 @@ const UPDATE_LOGO = gql`
                 borderColor: $borderColor,
                 borderRadius: $borderRadius,
                 borderWidth: $borderWidth,
-                padding: $padding) {
+                padding: $padding,
+                margin: $margin) {
                     lastUpdate
                 }
         }
@@ -49,7 +52,7 @@ const UPDATE_LOGO = gql`
 class EditLogoScreen extends Component {
 
     render() {
-        let text, color, fontSize, backgroundColor, borderColor, borderRadius, borderWidth, padding;
+        let text, color, fontSize, backgroundColor, borderColor, borderRadius, borderWidth, padding, margin;
         return (
             <Query query={GET_LOGO} variables={{ logoId: this.props.match.params.id }}>
                 {({ loading, error, data }) => {
@@ -79,7 +82,8 @@ class EditLogoScreen extends Component {
                                                                             borderColor: borderColor.value,
                                                                             borderRadius: parseInt(borderRadius.value),
                                                                             borderWidth: parseInt(borderWidth.value),
-                                                                            padding: parseInt(padding.value)
+                                                                            padding: parseInt(padding.value),
+                                                                            margin: parseInt(margin.value)
                                                                             } });
                                                     text.value = "";
                                                     color.value = "";
@@ -88,7 +92,8 @@ class EditLogoScreen extends Component {
                                                     borderColor.value = "";
                                                     borderRadius.value = "";
                                                     borderWidth.value = "";
-                                                    padding.value = ""
+                                                    padding.value = "";
+                                                    margin.value = "";
                                                 }}>
                                                     <div className="form-group">
                                                         <label htmlFor="text">Text:</label>
@@ -137,6 +142,12 @@ class EditLogoScreen extends Component {
                                                         <input type="text" className="form-control" name="padding" ref={node => {
                                                             padding = node;
                                                         }} placeholder="Padding" defaultValue={data.logo.padding} />
+                                                    </div>
+                                                    <div className="form-group">
+                                                        <label htmlFor="margin">Margin:</label>
+                                                        <input type="text" className="form-control" name="margin" ref={node => {
+                                                            margin = node;
+                                                        }} placeholder="Margin" defaultValue={data.logo.margin} />
                                                     </div>
                                                     <button type="submit" className="btn btn-success">Submit</button>
                                                 </form>
