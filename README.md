@@ -1,68 +1,83 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Query Data with GraphiQL
+### Copy and paste the command below to get all the logos currentyly in the database
 
-## Available Scripts
+    query {
+      logos {
+        _id,
+        text,
+        color,
+        fontSize,
+        backgroundColor,
+        borderColor,
+        borderRadius,
+        borderWidth,
+        lastUpdate,
+        ms
+      }
+    }
 
-In the project directory, you can run:
+# Add a logo into the database
 
-### `yarn start`
+### Use this command to add an example logo into the database
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    mutation {
+      addLogo(text: "Example Text for Logo", 
+        			color: "#FFA500",
+      				fontSize: 45,
+      				backgroundColor: "#FFFFFF",
+      				borderColor: "#ABC4E7",
+      				borderRadius: 23,
+      				borderWidth: 16,
+        			padding: 23,
+        			margin: 26
+      			) {
+        text,
+        color,
+        fontSize,
+        backgroundColor,
+        borderColor,
+        borderRadius,
+        borderWidth,
+        lastUpdate
+      }
+    }
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Query the database again and get the _id of the logo you just added
 
-### `yarn test`
+# Update a logo in the database
+### Now, copy the code below but also remember to replace "[ID HERE]" with the _id you just got from the logo you created.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    mutation {
+      updateLogo(
+        			id: [ID HERE],
+        			text: "Example Text Update Logo", 
+        			color: "#FFA500",
+      				fontSize: 45,
+      				backgroundColor: "#FFFFFF",
+      				borderColor: "#ABC4E7",
+      				borderRadius: 23,
+      				borderWidth: 16,
+        			padding: 23,
+        			margin: 26
+      			) {
+        text,
+        color,
+        fontSize,
+        backgroundColor,
+        borderColor,
+        borderRadius,
+        borderWidth,
+        lastUpdate
+      }
+    }
 
-### `yarn build`
+### Query the database again and you'll see the corresponding logo has been updated
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Delete a logo in the database
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Run the following code to delete a logo based on its id
+    mutation {
+      removeLogo(id: [ID HERE]) {
+        _id
+      }
+    }

@@ -183,7 +183,7 @@ var mutation = new GraphQLObjectType({
                                                                     padding: params.padding, 
                                                                     margin: params.margin,
                                                                     lastUpdate: new Date(),
-                                                                    ms: params.ms }, function (err) {
+                                                                    ms: String(Date.now()) }, function (err) {
                         if (err) return next(err);
                     });
                 }
