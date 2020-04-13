@@ -27,7 +27,7 @@ class HomeScreen extends Component {
                     if (error) return `Error! ${error.message}`;
 
                     return (
-                        <div className="container row">
+                        <div className="container row" id = "homeParentDiv">
                             <div id = "recent_work_div" className="col s4">
                                 <h3 id = "recent_work_home">Recent Work</h3>
                                 {data.logos.sort((a, b) => Number(b.ms) - Number(a.ms)).map((logo, index) => (

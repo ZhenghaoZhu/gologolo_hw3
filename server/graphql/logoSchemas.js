@@ -120,13 +120,11 @@ var mutation = new GraphQLObjectType({
                     },
                     margin: {
                         type: new GraphQLNonNull(GraphQLInt)
-                    },
-                    ms: {
-                        type: new GraphQLNonNull(GraphQLString)
                     }
                 },
                 resolve: function (root, params) {
                     const logoModel = new LogoModel(params);
+                    logoModel.ms = Date.now();
                     const newLogo = logoModel.save();
                     if (!newLogo) {
                         throw new Error('Error');
@@ -167,9 +165,6 @@ var mutation = new GraphQLObjectType({
                     },
                     margin: {
                         type: new GraphQLNonNull(GraphQLInt)
-                    },
-                    ms: {
-                        type: new GraphQLNonNull(GraphQLString)
                     }
                 },
                 resolve(root, params) {

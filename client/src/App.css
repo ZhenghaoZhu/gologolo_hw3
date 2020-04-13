@@ -30,12 +30,14 @@ body {
   padding-top: 5%;
   padding-bottom: 5%;
   text-align: center;
+  display: inline-block;
+  width: 500px
 }
 
 #add_logo_button {
   font-size: 32pt;
   background-color: rgb(202, 199, 199);
-  width: 530px;
+  width: 500px;
   margin-top: 10px;
 }
 
@@ -45,18 +47,23 @@ body {
 }
 
 #recent_work_home {
-  font-size: 36pt;
+  font-size: 32pt;
   text-decoration: underline;
 }
 
 #recent_work_div {
   margin-left: 70px;
-  width: 300px
+  width: 200px;
+  display: inline-block;
+}
+
+#homeParentDiv {
+  display: flex;
 }
 
 .home_logo_link {
   white-space: pre;
-  font-size: 24pt;
+  font-size: 20pt;
   width: 300px;
 }
 
