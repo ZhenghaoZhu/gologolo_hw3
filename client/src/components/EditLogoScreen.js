@@ -17,6 +17,7 @@ const GET_LOGO = gql`
             borderWidth
             padding
             margin
+            ms
         }
     }
 `;
@@ -32,7 +33,8 @@ const UPDATE_LOGO = gql`
         $borderRadius: Int!,
         $borderWidth: Int!,
         $padding: Int!,
-        $margin: Int!) {
+        $margin: Int!,
+        $ms: String!) {
             updateLogo(
                 id: $id,
                 text: $text,
@@ -43,7 +45,8 @@ const UPDATE_LOGO = gql`
                 borderRadius: $borderRadius,
                 borderWidth: $borderWidth,
                 padding: $padding,
-                margin: $margin) {
+                margin: $margin,
+                ms: $ms) {
                     lastUpdate
                 }
         }
@@ -52,7 +55,7 @@ const UPDATE_LOGO = gql`
 class EditLogoScreen extends Component {
 
     render() {
-        let text, color, fontSize, backgroundColor, borderColor, borderRadius, borderWidth, padding, margin;
+        let text, color, fontSize, backgroundColor, borderColor, borderRadius, borderWidth, padding, margin, ms;
         return (
             <Query query={GET_LOGO} variables={{ logoId: this.props.match.params.id }}>
                 {({ loading, error, data }) => {
@@ -83,7 +86,8 @@ class EditLogoScreen extends Component {
                                                                             borderRadius: parseInt(borderRadius.value),
                                                                             borderWidth: parseInt(borderWidth.value),
                                                                             padding: parseInt(padding.value),
-                                                                            margin: parseInt(margin.value)
+                                                                            margin: parseInt(margin.value),
+                                                                            ms: String(Date.now())
                                                                             } });
                                                     text.value = "";
                                                     color.value = "";

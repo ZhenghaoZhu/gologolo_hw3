@@ -12,6 +12,7 @@ const GET_LOGOS = gql`
       _id
       text
       lastUpdate
+      ms
     }
   }
 `;
@@ -29,7 +30,7 @@ class HomeScreen extends Component {
                         <div className="container row">
                             <div id = "recent_work_div" className="col s4">
                                 <h3 id = "recent_work_home">Recent Work</h3>
-                                {data.logos.map((logo, index) => (
+                                {data.logos.sort((a, b) => Number(b.ms) - Number(a.ms)).map((logo, index) => (
                                     <div key={index} className='home_logo_link'
                                         style={{ cursor: "pointer" }}>
                                         <Link to={`/view/${logo._id}`}>{"• " + logo.text}</Link>
@@ -53,6 +54,7 @@ class HomeScreen extends Component {
             </Query>
         );
     }
+
 }
 
 export default HomeScreen;

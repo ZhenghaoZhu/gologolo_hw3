@@ -12,6 +12,7 @@ var LogoSchema = new mongoose.Schema({
   padding: { type: Number, min: 2, max: 144},
   margin: { type: Number, min: 2, max: 144},
   lastUpdate: { type: Date, default: Date.now },
+  ms: String
 });
 
 module.exports = mongoose.model('Logo', LogoSchema);
