@@ -33,7 +33,7 @@ class HomeScreen extends Component {
                                 {data.logos.sort((a, b) => Number(b.ms) - Number(a.ms)).map((logo, index) => (
                                     <div key={index} className='home_logo_link'
                                         style={{ cursor: "pointer" }}>
-                                        <Link to={`/view/${logo._id}`}>{"• " + logo.text}</Link>
+                                        <Link to={`/view/${logo._id}`} style = {{color : "black"}}>{"• " + logo.text}</Link>
                                     </div>
                                 ))}
                             </div>

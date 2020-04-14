@@ -80,6 +80,7 @@ body {
 }
 
 #displayedLogoViewLogoScreen {
+  white-space: pre;
   display: inline-block;
   margin-left: 150px;
 }
@@ -90,4 +91,5 @@ body {
 
 .displayedLogo {
   white-space: pre;
+  margin-left: 200px
 }

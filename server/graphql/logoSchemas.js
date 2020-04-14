@@ -120,6 +120,9 @@ var mutation = new GraphQLObjectType({
                     },
                     margin: {
                         type: new GraphQLNonNull(GraphQLInt)
+                    },
+                    ms : {
+                        type: GraphQLString
                     }
                 },
                 resolve: function (root, params) {
@@ -165,6 +168,9 @@ var mutation = new GraphQLObjectType({
                     },
                     margin: {
                         type: new GraphQLNonNull(GraphQLInt)
+                    },
+                    ms : {
+                        type: GraphQLString
                     }
                 },
                 resolve(root, params) {
