@@ -31,13 +31,13 @@ body {
   padding-bottom: 5%;
   text-align: center;
   display: inline-block;
-  width: 500px
+  width: 600px
 }
 
 #add_logo_button {
   font-size: 32pt;
   background-color: rgb(202, 199, 199);
-  width: 500px;
+  width: 600px;
   margin-top: 10px;
 }
 
@@ -53,12 +53,29 @@ body {
 
 #recent_work_div {
   margin-left: 70px;
-  width: 200px;
+  width: 300px;
   display: inline-block;
 }
 
 #homeParentDiv {
   display: flex;
+  margin-top: 200px;
+  margin-left: 300px;
+}
+
+#textDD {
+  white-space: pre;
+}
+
+#displayedLogoViewLogoScreen {
+  white-space: pre;
+  display: inline-block;
+  margin-left: 160px;
+  margin-top:160px;
+}
+
+#homeLogoAndButton {
+  display: inline-block;
 }
 
 .home_logo_link {
@@ -77,12 +94,6 @@ body {
 
 .panel_with_displayed_logo {
   display: flex
-}
-
-#displayedLogoViewLogoScreen {
-  white-space: pre;
-  display: inline-block;
-  margin-left: 150px;
 }
 
 .panel-body {

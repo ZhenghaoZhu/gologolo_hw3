@@ -37,7 +37,7 @@ class HomeScreen extends Component {
                                     </div>
                                 ))}
                             </div>
-                            <div className="col s8">
+                            <div id="homeLogoAndButton">
                                 <div id="home_banner_container">
                                     Gologolo
                                 </div>

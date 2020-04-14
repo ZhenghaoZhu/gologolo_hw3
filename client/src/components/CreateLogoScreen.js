@@ -38,7 +38,7 @@ const ADD_LOGO = gql`
                 constructor(props) {
                     super(props);
                     this.state = {
-                    text: "Name of Logo",
+                    text: "Change this Text",
                     color: "#0000FF",
                     fontSize: 30,
                     borderColor: "#FF0000",
